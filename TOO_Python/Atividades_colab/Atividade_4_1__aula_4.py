@@ -28,3 +28,5 @@ except ValueError as err:
     print (f"ERRO: {err}")
 
 #ficou dizendo que tem um carcter a mais
+
+print ("commit teste")
