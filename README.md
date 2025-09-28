@@ -4,10 +4,11 @@ Repositório com os códigos e projetos da matéria de Tecnologia de Orientaçã
 
 ## 🚀 Tecnologias e Conceitos
 
-- **Linguagem:** [Python]
+- **Linguagem:** Python.
 - **Principais Conceitos Aplicados:**
   - Classes e Objetos
   - Herança
   - Polimorfismo
   - Encapsulamento
   - Abstração
+
