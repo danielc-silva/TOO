@@ -3,10 +3,10 @@ from datetime import date, time, datetime, timedelta
 
 class Tarefa:
     def __init__(self, nome_tarefa, descricao=None, data_realizacao=None):
-        self.__nome = nome_tarefa
-        self.__concluido = False
-        self.__descricao = descricao
-        self.__data_realizacao = data_realizacao
+        self.nome = nome_tarefa
+        self.__concluido = False  # aqui tem os __ pois não temos um setter, e usamos concluido internamente com outra função
+        self.descricao = descricao
+        self.data_realizacao = data_realizacao
 
     @property  # sempre tem um retorno
     def data_realizacao(self):
@@ -14,17 +14,26 @@ class Tarefa:
 
     @data_realizacao.setter
     def data_realizacao(self, data):
+    # Mantém a sua ótima verificação para None
         if data is None:
             self.__data_realizacao = None
-            return # Sai da função aqui
+            return
         try:
-            self.__data_realizacao = datetime.strptime(data, "%d-%m-%Y")
-        except ValueError as e:
-            print(f"ERRO: Data em formato inválido. Use DD-MM-YYYY. ({e})")
+            # Tenta converter a data no formato com hífens
+            temporario = datetime.strptime(data, "%d-%m-%Y")
+            self.__data_realizacao = temporario.date()
+        except ValueError:
+             # Se falhar, AVISA o erro e LEVANTA uma nova exceção para parar o processo.
+             # Isso força o 'except' do seu programa principal a ser acionado.
+             # o try excpt captura erros que acontecem sozinhos já o raize ele cria um erro intencinal
+             raise ValueError(f"ERRO: Data '{data}' em formato inválido. Use DD-MM-YYYY.")
 
     @property
     def nome(self):
-        return self.__nome.upper()
+        return (
+            self.__nome.upper()
+        )  # aqui usamos __ então não precisamos usar no init,
+           #pois aqui já faz isso, e se colocasse no init ia ignorar o que temos aqui
 
     @nome.setter
     def nome(self, nome_tarefa):
@@ -38,13 +47,15 @@ class Tarefa:
     def descricao(self, desc):
         self.__descricao = desc
 
+    ## outros métodos
+
     def concluir_tarefa(self):
         self.__concluido = True
 
     def exibir_dados(self):
         status = "CONCLUIDO" if self.__concluido == True else "A FAZER"
         return f"Tarefa cadastrada: {self.nome} [{status}]"
-    
+
     def __str__(self):
         status = "CONCLUIDA" if self.__concluido else "A FAZER"
         return f"Tarefa: {self.nome} [{status}]"
