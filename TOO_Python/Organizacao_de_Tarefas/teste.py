@@ -22,12 +22,12 @@ try:
     else:
         print("Tarefas diferentes.")
 
-    print("\n")
+    print() #o print já dá um \n automaticamente
 
     t4 = TarefaEscolar(
         "Introdução a herança",
         "TOO",
-        0,
+        1,
         "Deve ser realizada no notbook",
         "21-10-2025",
         "12-10-2026",
