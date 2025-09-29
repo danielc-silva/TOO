@@ -32,6 +32,9 @@ try:
         "21-10-2025",
         "12-10-2026",
     )
+
+    #t4.concluir_tarefa()
+
     print(t4)  # mostra de acordo com a função __str__
     # print(t4.exibir_dados()) mostra de acordo com o exibir dados
 
