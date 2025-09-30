@@ -37,6 +37,10 @@ try:
     ) # nesse caso não vou mandar uma data de entrega
       # vai continuar no status [A FAZER]
      
+
+     # Mostrando Objetos pelo metodo .exibir_dados
+     # Criei um método exibir dados para Disciplina
+     
      print("\n\n")
 
      print(D1_Calculo.exibir_dados())
