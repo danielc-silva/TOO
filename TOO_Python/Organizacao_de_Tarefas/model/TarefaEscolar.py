@@ -5,25 +5,25 @@ class TarefaEscolar(Tarefa):
     def __init__(
         self,
         nome_tarefa,
-        disciplina,
-        peso=0,
+        obj_disciplina,
+        peso=0, 
         descricao=None,
         data_realizacao=None,
-        data_entrega=None,
+        data_entrega=None
     ):
         super().__init__(nome_tarefa, descricao, data_realizacao) # herdei os campos que tenho em Tarefa 
         # agr crio os campos que fazem parte apenas de TarefaEscolar
-        self.disciplina = disciplina
+        self.obj_disciplina = obj_disciplina
         self.peso = peso
         self.data_entrega = data_entrega
 
     @property
-    def disciplina(self):
-        return self.__disciplina
+    def obj_disciplina(self):
+        return self.__obj_disciplina
     
-    @disciplina.setter
-    def disciplina(self, nome_disciplina):
-        self.__disciplina = nome_disciplina
+    @obj_disciplina.setter
+    def obj_disciplina(self, nome_disciplina):
+        self.__obj_disciplina = nome_disciplina
 
     @property
     def peso(self):
@@ -31,8 +31,13 @@ class TarefaEscolar(Tarefa):
     
     @peso.setter #lembrando q setter deve ser feito depois do property
     def peso(self, peso_dis):
-        if peso_dis >= 0:
-            self.__peso = peso_dis
+        try:
+            peso_convertido = float(peso_dis) # tento converter para float, c der erro é pq provavelmente recebeu um "sete"
+        except (ValueError, TypeError):
+            raise ValueError("O peso deve ser um valor numérico.")
+        
+        if peso_convertido >= 0:
+            self.__peso = peso_convertido
             return
         else:
             raise ValueError("O peso deve ser maior ou igual a zero.\n")
@@ -52,6 +57,8 @@ class TarefaEscolar(Tarefa):
             # Tenta converter a data no formato com hífens
             temporario = datetime.strptime(nova_data, "%d-%m-%Y") 
             self.__data_entrega = temporario.date()
+            self.concluir_tarefa() # recebi uma data q foi entregue então já marco como concluida
+
         except ValueError:
              #é a mesma logica q usei pra validar no Tarefa
              raise ValueError(f"ERRO: Data '{nova_data}' em formato inválido. Use DD-MM-YYYY.")
@@ -61,7 +68,7 @@ class TarefaEscolar(Tarefa):
         info_pai = super().__str__() #chamei o __str__ de Tarefa reaproveitei ele sobrescrevi
         
         info_escolar = (
-            f"\nDisciplina: {self.disciplina}\n"
+            f"\nDisciplina: {self.obj_disciplina}"
             f"Peso: {self.peso}\n"
             f"Data de Entrega: {self.data_entrega or 'Não definida'}\n"
         )
@@ -71,14 +78,15 @@ class TarefaEscolar(Tarefa):
     def exibir_dados(self):
         Ex_Dados = super().exibir_dados()
 
-        if self.disciplina != None:
-            Ex_Dados += f"\nDisciplina: {self.disciplina}\n"
+        if self.obj_disciplina != None:
+            Ex_Dados += f"\nDisciplina: {self.obj_disciplina}\n"
+
+        if self.data_entrega != None:
+            Ex_Dados += f"Entregue em: {self.data_entrega}\n"
 
         if self.peso != None:
             Ex_Dados += f"Peso: {self.peso}\n"
 
-        if self.data_entrega != None:
-            Ex_Dados += f"Data de Entrega: {self.data_entrega}\n"
 
         return Ex_Dados 
         

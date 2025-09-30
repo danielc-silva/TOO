@@ -32,10 +32,10 @@ class Tarefa:
     def nome(self):
         return (
             self.__nome.upper()
-        )  # aqui usamos __ então não precisamos usar no init,
+        )  
            #pois aqui já faz isso, e se colocasse no init ia ignorar o que temos aqui
 
-    @nome.setter
+    @nome.setter # quando o init chama o setter ele cria e define como atributo privado
     def nome(self, nome_tarefa):
         self.__nome = nome_tarefa
 
@@ -53,21 +53,19 @@ class Tarefa:
         self.__concluido = True
 
 
-
     def exibir_dados(self):
-        Ex_Dados = ""
+        Ex_Dados = "Tarefa cadastrada:\n"
         status = "CONCLUIDO" if self.__concluido == True else "A FAZER"
         if self.nome != None:
             Ex_Dados += f"Título: {self.nome} [{status}]\n"
         
         if self.data_realizacao != None:
-            Ex_Dados += f"Data de Realização: {self.data_realizacao or 'Não definida'}"
+            Ex_Dados += f"Data prevista: {self.data_realizacao or 'Não definida'}"
 
         return Ex_Dados
 
 
-
-    def __str__(self):
+    def __str__(self): 
         status = "CONCLUIDA" if self.__concluido else "A FAZER"
         return f"Título: {self.nome} [{status}]\nData de Realização: {self.data_realizacao or 'Não definida'}"
 
