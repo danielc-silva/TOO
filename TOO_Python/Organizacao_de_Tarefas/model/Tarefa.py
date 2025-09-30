@@ -58,7 +58,10 @@ class Tarefa:
         status = "CONCLUIDO" if self.__concluido == True else "A FAZER"
         if self.nome != None:
             Ex_Dados += f"Título: {self.nome} [{status}]\n"
-        
+
+        if self.descricao != None:
+            Ex_Dados += f"Descrição: {self.descricao}\n"
+
         if self.data_realizacao != None:
             Ex_Dados += f"Data prevista: {self.data_realizacao or 'Não definida'}"
 

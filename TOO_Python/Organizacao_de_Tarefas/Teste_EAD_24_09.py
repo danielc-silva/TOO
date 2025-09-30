@@ -20,7 +20,7 @@ try:
         "Introdução a herança",
         D2_Too,
         7,
-        "Deve ser realizada no notbook",
+        "Deve ser realizada no Colab",
         "21-10-2026",
         "12-08-2025",
     ) # aqui estou pondo uma data da entrega
