@@ -34,9 +34,10 @@ try:
     )
 
     #t4.concluir_tarefa()
-
-    print(t4)  # mostra de acordo com a função __str__
-    # print(t4.exibir_dados()) mostra de acordo com o exibir dados
+    print ("Mostrando com o método __str__\n")
+    print(t4)  # mostra de acordo com a função __str__ mostrando todos os campos independente se None ou não
+    print ("Mostrando com o método exibir_dados() \n")
+    print(t4.exibir_dados()) # mostra de acordo com o exibir dados quando não tem valor ele não mostra o campo
 
 except Exception as e:
     print(f"ERRO: {e}")

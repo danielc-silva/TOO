@@ -52,9 +52,20 @@ class Tarefa:
     def concluir_tarefa(self):
         self.__concluido = True
 
+
+
     def exibir_dados(self):
+        Ex_Dados = ""
         status = "CONCLUIDO" if self.__concluido == True else "A FAZER"
-        return f"Tarefa cadastrada: {self.nome} [{status}]"
+        if self.nome != None:
+            Ex_Dados += f"Título: {self.nome} [{status}]\n"
+        
+        if self.data_realizacao != None:
+            Ex_Dados += f"Data de Realização: {self.data_realizacao or 'Não definida'}"
+
+        return Ex_Dados
+
+
 
     def __str__(self):
         status = "CONCLUIDA" if self.__concluido else "A FAZER"

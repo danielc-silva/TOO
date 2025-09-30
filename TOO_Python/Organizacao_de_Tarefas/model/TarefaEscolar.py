@@ -65,5 +65,20 @@ class TarefaEscolar(Tarefa):
             f"Peso: {self.peso}\n"
             f"Data de Entrega: {self.data_entrega or 'Não definida'}\n"
         )
-        
         return f"{info_pai}{info_escolar}"
+    
+
+    def exibir_dados(self):
+        Ex_Dados = super().exibir_dados()
+
+        if self.disciplina != None:
+            Ex_Dados += f"\nDisciplina: {self.disciplina}\n"
+
+        if self.peso != None:
+            Ex_Dados += f"Peso: {self.peso}\n"
+
+        if self.data_entrega != None:
+            Ex_Dados += f"Data de Entrega: {self.data_entrega}\n"
+
+        return Ex_Dados 
+        
