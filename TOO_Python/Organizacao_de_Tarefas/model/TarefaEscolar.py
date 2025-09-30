@@ -57,13 +57,13 @@ class TarefaEscolar(Tarefa):
              raise ValueError(f"ERRO: Data '{nova_data}' em formato inválido. Use DD-MM-YYYY.")
 
     def __str__(self):
-        info_pai = super().__str__() #chamei o __str__ de Tarefa reaproveitei ele 
+
+        info_pai = super().__str__() #chamei o __str__ de Tarefa reaproveitei ele sobrescrevi
         
         info_escolar = (
             f"\nDisciplina: {self.disciplina}\n"
             f"Peso: {self.peso}\n"
             f"Data de Entrega: {self.data_entrega or 'Não definida'}\n"
-             f"Data de Realização: {self.data_realizacao or 'Não definida'}"
         )
         
         return f"{info_pai}{info_escolar}"

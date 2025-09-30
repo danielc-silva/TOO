@@ -38,7 +38,5 @@ try:
     print(t4)  # mostra de acordo com a função __str__
     # print(t4.exibir_dados()) mostra de acordo com o exibir dados
 
-    print("\n")
-
 except Exception as e:
     print(f"ERRO: {e}")

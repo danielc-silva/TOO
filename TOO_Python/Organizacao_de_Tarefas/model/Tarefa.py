@@ -25,7 +25,7 @@ class Tarefa:
         except ValueError:
              # Se falhar, AVISA o erro e LEVANTA uma nova exceção para parar o processo.
              # Isso força o 'except' do seu programa principal a ser acionado.
-             # o try excpt captura erros que acontecem sozinhos já o raize ele cria um erro intencinal
+             # o try excpt captura erros que acontecem sozinhos já o raize ele cria um erro intencional
              raise ValueError(f"ERRO: Data '{data}' em formato inválido. Use DD-MM-YYYY.")
 
     @property
@@ -58,7 +58,7 @@ class Tarefa:
 
     def __str__(self):
         status = "CONCLUIDA" if self.__concluido else "A FAZER"
-        return f"Tarefa: {self.nome} [{status}]"
+        return f"Título: {self.nome} [{status}]\nData de Realização: {self.data_realizacao or 'Não definida'}"
 
     def __eq__(self, outro):
         if self.nome == outro.nome and self.data_realizacao == outro.data_realizacao:
