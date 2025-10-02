@@ -5,13 +5,17 @@ class Disciplina:
         self.carga_horaria = carga_horaria
         self.professor = professor
 
+        # eu deixo os __ caso eu não quero mais alterar,
+        # botei um curso e não vou mais alterar não posso mais alterar
+        # tendo um setter eu posso mudar ela e retiro o __
+
     @property  # sempre tem um retorno
     def nome(self):
         return self.__nome
     
     @nome.setter
     def nome(self, nome_disciplina):
-        self.__nome = nome_disciplina
+        self.__nome = nome_disciplina.strip().title()
 
     @property
     def curso (self):
