@@ -53,7 +53,7 @@ try:
      print(T1_Escolar.exibir_dados())
      print(T2_Escolar.exibir_dados())
 
-     print("\n\n Depois de Tudo Teste dnv skksks")
+     print("\n\n")
 
 except Exception as e:
     print(f"ERRO: {e}")
