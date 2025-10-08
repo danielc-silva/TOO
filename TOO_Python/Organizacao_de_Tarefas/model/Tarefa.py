@@ -2,8 +2,8 @@ from datetime import date, time, datetime, timedelta
 
 
 class Tarefa:
-    def __init__(self, nome_tarefa, descricao=None, data_realizacao=None):
-        self.nome = nome_tarefa
+    def __init__(self, nome_tarefa=None, descricao=None, data_realizacao=None):
+        self.nome_T = nome_tarefa
         self.__concluido = False  # aqui tem os __ pois não temos um setter, e usamos concluido internamente com outra função
         self.descricao = descricao
         self.data_realizacao = data_realizacao
@@ -29,15 +29,15 @@ class Tarefa:
              raise ValueError(f"ERRO: Data '{data}' em formato inválido. Use DD-MM-YYYY.")
 
     @property
-    def nome(self):
+    def nome_T(self):
         return (
-            self.__nome.upper()
+            self.__nome_T
         )  
            #pois aqui já faz isso, e se colocasse no init ia ignorar o que temos aqui
 
-    @nome.setter # quando o init chama o setter ele cria e define como atributo privado
-    def nome(self, nome_tarefa):
-        self.__nome = nome_tarefa
+    @nome_T.setter # quando o init chama o setter ele cria e define como atributo privado
+    def nome_T(self, nome_tarefa):
+        self.__nome_T = nome_tarefa 
 
     @property
     def descricao(self):
@@ -54,26 +54,26 @@ class Tarefa:
 
 
     def exibir_dados(self):
-        Ex_Dados = "Tarefa cadastrada:\n"
+        Ex_Dados = "\vTAREFA CADASTRADA:"
         status = "CONCLUIDO" if self.__concluido == True else "A FAZER"
-        if self.nome != None:
-            Ex_Dados += f"Título: {self.nome} [{status}]\n"
+        if self.nome_T != None:
+            Ex_Dados += f"\nTítulo: {self.nome_T} [{status}]"
 
         if self.descricao != None:
-            Ex_Dados += f"Descrição: {self.descricao}\n"
+            Ex_Dados += f"\nDescrição: {self.descricao}"
 
         if self.data_realizacao != None:
-            Ex_Dados += f"Data prevista: {self.data_realizacao or 'Não definida'}"
+            Ex_Dados += f"\nData prevista: {self.data_realizacao or 'Não definida'}"
 
         return Ex_Dados
 
 
     def __str__(self): 
         status = "CONCLUIDA" if self.__concluido else "A FAZER"
-        return f"Título: {self.nome} [{status}]\nData de Realização: {self.data_realizacao or 'Não definida'}"
+        return f"\nTítulo: {self.nome_T} [{status}]\nData de Realização: {self.data_realizacao or 'Não definida'}"
 
-    def __eq__(self, outro):
-        if self.nome == outro.nome and self.data_realizacao == outro.data_realizacao:
+    def __eq__(self, outro): # com esse consigo comparar se são iguais
+        if self.nome_T == outro.nome_T and self.data_realizacao == outro.data_realizacao:
             return True
         else:
             return False
