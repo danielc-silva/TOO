@@ -13,7 +13,7 @@ try:
      #print(D3_Estrutura_I)
 
      # TAREFA GENÉRICA SEM VINCULO COM DISCIPLINA
-     T1_Generica = Tarefa ("Estudar TOO", "Aprender conceitos e orientação a objetos.", "07-10-2025")
+     #T1_Generica = Tarefa ("Estudar TOO", "Aprender conceitos e orientação a objetos.", "07-10-2025")
      #print (T1_Generica)
 
      T1_Escolar = TarefaEscolar(
@@ -47,7 +47,7 @@ try:
      print(D2_Too.exibir_dados())
      print(D3_Estrutura_I.exibir_dados())
 
-     print(T1_Generica.exibir_dados())
+     #print(T1_Generica.exibir_dados())
      print()
 
      print(T1_Escolar.exibir_dados())

@@ -1,7 +1,11 @@
 from datetime import date, time, datetime, timedelta
+from abc import ABC, abstractmethod
 
+#  não vou criar ua tarefa generica,
+#  vou apenas usar as tarefas escolar pessoal, profissional, 
+# no caso Tarefa será uma classe abstrata
 
-class Tarefa:
+class Tarefa (ABC):
     def __init__(self, nome_tarefa=None, descricao=None, data_realizacao=None):
         self.nome_T = nome_tarefa
         self.__concluido = False  # aqui tem os __ pois não temos um setter, e usamos concluido internamente com outra função
@@ -53,6 +57,7 @@ class Tarefa:
         self.__concluido = True
 
 
+    @abstractmethod
     def exibir_dados(self):
         Ex_Dados = "\vTAREFA CADASTRADA:"
         status = "CONCLUIDO" if self.__concluido == True else "A FAZER"
@@ -77,3 +82,8 @@ class Tarefa:
             return True
         else:
             return False
+        
+    # @abstractmethod
+    #def teste_definir (self):
+    #   pass 
+    # nesse caso quando crio uma tarefa ele me obriga a criar um tese_definir
