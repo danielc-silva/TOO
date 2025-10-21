@@ -86,4 +86,4 @@ class Tarefa (ABC):
     # @abstractmethod
     #def teste_definir (self):
     #   pass 
-    # nesse caso quando crio uma tarefa ele me obriga a criar um tese_definir
+    # nesse caso quando crio uma tarefa ele me obriga a criar um teste_definir
