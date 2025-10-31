@@ -1,17 +1,20 @@
 from .Tarefa import Tarefa
 from datetime import date, time, datetime, timedelta
+from .StatusTarefa import StatusTarefa
+from .Disciplina import Disciplina
 
 class TarefaEscolar(Tarefa):
     def __init__(
         self,
         nome_tarefa,
-        obj_disciplina,
+        obj_disciplina : Disciplina,
         peso=0, 
         descricao=None,
         data_realizacao=None,
-        data_entrega=None
+        data_entrega=None,
+        status = StatusTarefa.A_FAZER
     ):
-        super().__init__(nome_tarefa, descricao, data_realizacao) # herdei os campos que tenho em Tarefa 
+        super().__init__(nome_tarefa, descricao, data_realizacao, status) # herdei os campos que tenho em Tarefa 
         # agr crio os campos que fazem parte apenas de TarefaEscolar
         self.obj_disciplina = obj_disciplina
         self.peso = peso

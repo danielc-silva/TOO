@@ -1,9 +1,10 @@
 from .Tarefa import Tarefa
 from datetime import date, time, datetime, timedelta
+from .StatusTarefa import StatusTarefa
 
 class TarefaProfissional(Tarefa):
-    def __init__(self, projeto = None, data_entrega = None, nome_tarefa = None, descricao=None, data_realizacao=None):
-        super().__init__(nome_tarefa, descricao, data_realizacao) # herdei os campos que tenho em Tarefa 
+    def __init__(self, projeto = None, data_entrega = None, nome_tarefa = None, descricao=None, data_realizacao=None, status = StatusTarefa.A_FAZER):
+        super().__init__(nome_tarefa, descricao, data_realizacao, status) # herdei os campos que tenho em Tarefa 
         self.projeto = projeto
         self.data_entrega = data_entrega
     
