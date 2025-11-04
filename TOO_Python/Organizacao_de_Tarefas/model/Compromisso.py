@@ -26,5 +26,6 @@ class Compromisso (Agendamento, Tarefa):
 
         return infos
 
-      
+    def definir_termino(self):
+        return super().definir_termino()
        

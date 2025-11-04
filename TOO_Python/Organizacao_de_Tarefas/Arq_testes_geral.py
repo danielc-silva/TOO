@@ -39,5 +39,7 @@ try:
     print ("Mostrando com o método exibir_dados() \n")
     print(t4.exibir_dados()) # mostra de acordo com o exibir dados quando não tem valor ele não mostra o campo
 
+    # ao executa esse cód vai dar erro, pois estou tentando criar algo com uma classe abstrata
+
 except Exception as e:
     print(f"ERRO: {e}")

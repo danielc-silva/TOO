@@ -1,11 +1,12 @@
 from .Tarefa import Tarefa
+from .StatusTarefa import StatusTarefa
+from datetime import date, time, datetime, timedelta
 
 class TarefaPessoal(Tarefa):
-    def __init__(self, tipo_relacionado = None, nome_tarefa = None, descricao=None, data_realizacao=None):
-        super().__init__(nome_tarefa, descricao, data_realizacao) # herdei os campos que tenho em Tarefa 
+    def __init__(self, tipo_relacionado = None, nome_tarefa = None, descricao=None, data_realizacao=None, status = StatusTarefa.A_FAZER):
+        super().__init__(nome_tarefa, descricao, data_realizacao, status) # herdei os campos que tenho em Tarefa 
         self.tipo_relacionado = tipo_relacionado
 
-    
     @property
     def tipo_relacionado(self):
         return self.__tipo_relacionado
@@ -27,3 +28,7 @@ class TarefaPessoal(Tarefa):
              infos +=  f"\nTipo: {self.tipo_relacionado}"
         
         return infos
+    
+    def definir_termino(self):
+         hoje = datetime.now()
+         self.data_realizacao = hoje.strftime("%d-%m-%Y")

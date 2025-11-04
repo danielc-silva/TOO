@@ -1,16 +1,19 @@
 from datetime import date, time, datetime, timedelta
 from abc import ABC, abstractmethod
+from .StatusTarefa import StatusTarefa
 
 #  não vou criar ua tarefa generica,
 #  vou apenas usar as tarefas escolar pessoal, profissional, 
 # no caso Tarefa será uma classe abstrata
 
 class Tarefa (ABC):
-    def __init__(self, nome_tarefa=None, descricao=None, data_realizacao=None):
+    def __init__(self, nome_tarefa=None, descricao=None, data_realizacao=None, status = StatusTarefa.A_FAZER ):
         self.nome_T = nome_tarefa
-        self.__concluido = False  # aqui tem os __ pois não temos um setter, e usamos concluido internamente com outra função
+        # vou comentar e usar um enun
+        # self.__concluido = False  # aqui tem os __ pois não temos um setter, e usamos concluido internamente com outra função
         self.descricao = descricao
         self.data_realizacao = data_realizacao
+        self.status = status
 
     @property  # sempre tem um retorno
     def data_realizacao(self):
@@ -37,7 +40,7 @@ class Tarefa (ABC):
         return (
             self.__nome_T
         )  
-           #pois aqui já faz isso, e se colocasse no init ia ignorar o que temos aqui
+        #pois aqui já faz isso, e se colocasse no init ia ignorar o que temos aqui
 
     @nome_T.setter # quando o init chama o setter ele cria e define como atributo privado
     def nome_T(self, nome_tarefa):
@@ -53,16 +56,16 @@ class Tarefa (ABC):
 
     ## outros métodos
 
-    def concluir_tarefa(self):
-        self.__concluido = True
-
+    #def concluir_tarefa(self):
+        #self.__concluido = True
+        #self.status = StatusTarefa.CONCLUIDA
 
     @abstractmethod
     def exibir_dados(self):
-        Ex_Dados = "\vTAREFA CADASTRADA:"
-        status = "CONCLUIDO" if self.__concluido == True else "A FAZER"
+        Ex_Dados = "\nTAREFA CADASTRADA:"
+        #status = "CONCLUIDO" if self.__concluido == True else "A FAZER"
         if self.nome_T != None:
-            Ex_Dados += f"\nTítulo: {self.nome_T} [{status}]"
+            Ex_Dados += f"\nTítulo: {self.nome_T} [{self.status.value}]" 
 
         if self.descricao != None:
             Ex_Dados += f"\nDescrição: {self.descricao}"
@@ -72,16 +75,26 @@ class Tarefa (ABC):
 
         return Ex_Dados
 
-
-    def __str__(self): 
-        status = "CONCLUIDA" if self.__concluido else "A FAZER"
-        return f"\nTítulo: {self.nome_T} [{status}]\nData de Realização: {self.data_realizacao or 'Não definida'}"
+    def __str__(self):
+        return f"{self.__nome_T} [{self.status.value}]"
 
     def __eq__(self, outro): # com esse consigo comparar se são iguais
         if self.nome_T == outro.nome_T and self.data_realizacao == outro.data_realizacao:
             return True
         else:
             return False
+        
+    def concluir(self):
+        #self.__concluido = True
+        self.status = StatusTarefa.CONCLUIDA   
+        self.definir_termino() 
+    
+    def iniciarTarefa(self):
+        self.status = StatusTarefa.EM_ANDAMENTO
+
+    @abstractmethod
+    def definir_termino(self):
+        pass
         
     # @abstractmethod
     #def teste_definir (self):

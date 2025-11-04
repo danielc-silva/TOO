@@ -30,7 +30,7 @@ class TarefaProfissional(Tarefa):
             # Tenta converter a data no formato com hífens
             temporario = datetime.strptime(nova_data, "%d-%m-%Y") 
             self.__data_entrega = temporario.date()
-            self.concluir_tarefa() # recebi uma data q foi entregue então já marco como concluida
+            self.concluir() # recebi uma data q foi entregue então já marco como concluida
 
         except ValueError:
              #é a mesma logica q usei pra validar no Tarefa
@@ -53,3 +53,7 @@ class TarefaProfissional(Tarefa):
              infos +=  f"\nData entrega: {self.data_entrega}"
 
         return infos
+    
+    def definir_termino(self):
+         hoje = datetime.now()
+         self.data_realizacao = hoje.strftime("%d-%m-%Y")

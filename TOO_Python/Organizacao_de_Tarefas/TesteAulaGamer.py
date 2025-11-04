@@ -1,6 +1,6 @@
 from model.TarefaPessoal import TarefaPessoal
 from model.TarefaProfissional import TarefaProfissional
-from model. TarefaGamer import TarefaGamer
+from model.TarefaGamer import TarefaGamer
 from datetime import datetime 
 
 tPess = TarefaPessoal("Ir a feira")
@@ -9,7 +9,7 @@ tPess = TarefaPessoal("Ir a feira")
 
 #print(t.exibir_dados())
 
-tPro = TarefaProfissional("Preencher as planilhas", "07-10-2025" , "Mini Curso de CC") 
+tPro = TarefaProfissional("Preencher as planilhas", "07-10-2025" , "Mini Curso de CC",) 
 
 #tPro.concluir()
 

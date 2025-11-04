@@ -1,6 +1,5 @@
 from datetime import date, time, datetime, timedelta
 
-
 class Agendamento:
     def __init__(
         self, data_inicio=None, data_fim=None, atividade=None, nome=None, local=None
