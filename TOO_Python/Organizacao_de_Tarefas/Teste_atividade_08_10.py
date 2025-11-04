@@ -17,7 +17,7 @@ try:
     TProf2 = TarefaProfissional("Projeto Renovação", None, "Enviar documentos", "Documentos estão em uma pasta em cima da mesa para ser digitalizados" , "15-07-2027" )
     print (TProf2.exibir_dados()) # não vai constar CONCLUIDO pois não mandei data de entrega ou realização
 
-    TPss1 = TarefaPessoal("Compras", "Comprar Frutas e Verduras", "Banana, maça, brócolis, repolho", "15-07-2027" )
+    TPss1 = TarefaPessoal("SAUDE", "Comprar Frutas e Verduras", "Banana, maça, brócolis, repolho", "15-07-2027" )
     print (TPss1.exibir_dados()) 
 
     print("\n\n")

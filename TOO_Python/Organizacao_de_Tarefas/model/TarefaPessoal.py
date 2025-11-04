@@ -1,6 +1,7 @@
 from .Tarefa import Tarefa
 from .StatusTarefa import StatusTarefa
 from datetime import date, time, datetime, timedelta
+from .TipoTarefaPessoal import TipoTarefaPessoal
 
 class TarefaPessoal(Tarefa):
     def __init__(self, tipo_relacionado = None, nome_tarefa = None, descricao=None, data_realizacao=None, status = StatusTarefa.A_FAZER):
@@ -12,8 +13,34 @@ class TarefaPessoal(Tarefa):
         return self.__tipo_relacionado
     
     @tipo_relacionado.setter
-    def tipo_relacionado(self, tipo_tar):
-        self.__tipo_relacionado = tipo_tar
+    def tipo_relacionado(self, TipTar):
+        # testo e vejo se for none já digo q não foi definida
+        if TipTar is None:
+            self.__tipo_relacionado = TipoTarefaPessoal.OUTROS
+            return
+
+        # utililso o isinstance para ver c tem o que foi posto no enum q criei
+        if isinstance(TipTar, TipoTarefaPessoal):
+            self.__tipo_relacionado = TipTar
+            return
+        
+        # utilizando novamente vejo se é uma string
+        if isinstance(TipTar, str):
+            try:
+                # tento buscr pelo nome q nem FACIL
+                self.__tipo_relacionado = TipoTarefaPessoal[TipTar.upper()]
+                return
+            except KeyError:
+                # não consegui lá em cima tento pela palavra normal Fácil
+                try:
+                    self.__tipo_relacionado = TipoTarefaPessoal(TipTar)
+                    return
+                except ValueError:
+                    # chegou até aqui e deu erro passo e emito a mensagem
+                    pass
+
+        # levantei um erro.
+        raise ValueError(f"Tipo de tarefa: '{TipTar}' é inválido. Use um membro de TipoTarefaPessoal.")
 
     
     def __str__ (self):
@@ -23,10 +50,7 @@ class TarefaPessoal(Tarefa):
     
     def exibir_dados (self):
         infos = super().exibir_dados()
-
-        if self.tipo_relacionado != None:
-             infos +=  f"\nTipo: {self.tipo_relacionado}"
-        
+        infos +=  f"\nTipo: {self.tipo_relacionado.value}"
         return infos
     
     def definir_termino(self):

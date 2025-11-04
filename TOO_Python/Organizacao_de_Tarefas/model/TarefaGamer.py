@@ -33,13 +33,12 @@ class TarefaGamer(Tarefa):
         else:
              self.__tipo = "Não informado" # Ou "Geral", "Outros", etc.
 
-
     @property
     def dificuldade(self):
         return self.__dificuldade
     
     # [ isinstance ]-> função em Python que verifica se um objeto é uma instância de uma classe, tipo ou de uma tupla de classes
-    # usar ele é uma otima forma de usar em OO pois respeira herança e tals
+    # usar ele é uma otima forma em OO pois respeita herança e tals
     # pra melhor entender, ler e pensar dessa forma fica mais claro
     # se a instância [tal] for do tipo TarefaGamer aí posso usar em um if como true e false
 
