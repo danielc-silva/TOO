@@ -54,6 +54,15 @@ class Tarefa (ABC):
     def descricao(self, desc):
         self.__descricao = desc
 
+    @property
+    def status (self):
+        return self.__status
+    
+    @status.setter
+    def status (self, statuss):
+        self.__status = statuss
+    
+
     ## outros métodos
 
     #def concluir_tarefa(self):

@@ -15,7 +15,7 @@ tPro = TarefaProfissional("Preencher as planilhas", "07-10-2025" , "Mini Curso d
 
 #print(t.exibir_dados())
 
-a = TarefaGamer(titulo="Projeto Teste")
+a = TarefaGamer(titulo="Projeto Teste", tipo = "Treinamento", descricao = "Treino para o arena games IFSUL", jogo = "LOL" )
 
 #print(a.exibir_dados())
 
@@ -30,3 +30,6 @@ for tee in lista_de_tarefas:
     print(tee.exibir_dados())
 
 print ("\n\n")
+
+#print (f"\n{a}\n")
+# só um teste usando o __str__ bem simplificado
