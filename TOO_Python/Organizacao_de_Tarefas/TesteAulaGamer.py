@@ -3,7 +3,7 @@ from model.TarefaProfissional import TarefaProfissional
 from model.TarefaGamer import TarefaGamer
 from datetime import datetime 
 
-tPess = TarefaPessoal("Ir a feira")
+tPess = TarefaPessoal('OUTROS',"Ir a feira")
 
 #tPess.concluir()
 
@@ -19,7 +19,7 @@ a = TarefaGamer(titulo="Projeto Teste", tipo = "Treinamento", descricao = "Trein
 
 #print(a.exibir_dados())
 
-a.exibir_dados()
+#a.exibir_dados()
 
 lista_de_tarefas = [tPess, tPro, a]
 

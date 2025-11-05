@@ -55,5 +55,5 @@ class TarefaProfissional(Tarefa):
         return infos
     
     def definir_termino(self):
-         hoje = datetime.now()
+         hoje = datetime.now() # obtem data e hora atual do sistema
          self.data_realizacao = hoje.strftime("%d-%m-%Y")

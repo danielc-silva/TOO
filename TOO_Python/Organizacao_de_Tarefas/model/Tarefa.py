@@ -7,7 +7,7 @@ from .StatusTarefa import StatusTarefa
 # no caso Tarefa será uma classe abstrata
 
 class Tarefa (ABC):
-    def __init__(self, nome_tarefa=None, descricao=None, data_realizacao=None, status = StatusTarefa.A_FAZER ):
+    def __init__(self, nome_tarefa=None, descricao=None, data_realizacao=None, status = None ):
         self.nome_T = nome_tarefa
         # vou comentar e usar um enun
         # self.__concluido = False  # aqui tem os __ pois não temos um setter, e usamos concluido internamente com outra função
@@ -57,11 +57,36 @@ class Tarefa (ABC):
     @property
     def status (self):
         return self.__status
-    
+
     @status.setter
-    def status (self, statuss):
-        self.__status = statuss
-    
+    def status(self, statuss):
+        # testo e vejo se for none já digo q não foi definida
+        if statuss is None:
+            self.__status = StatusTarefa.A_FAZER
+            return
+
+        # utililso o isinstance para ver c tem o que foi posto no enum q criei
+        if isinstance(statuss, StatusTarefa):
+            self.__status = statuss
+            return
+        
+        # utilizando novamente vejo se é uma string
+        if isinstance(statuss, str):
+            try:
+                # tento buscr pelo nome q nem FACIL
+                self.__status = StatusTarefa[statuss.upper()]
+                return
+            except KeyError:
+                # não consegui lá em cima tento pela palavra normal Fácil
+                try:
+                    self.__status = StatusTarefa(statuss)
+                    return
+                except ValueError:
+                    # chegou até aqui e deu erro passo e emito a mensagem
+                    pass
+
+        # levantei um erro.
+        raise ValueError(f"Status: '{statuss}' é inválido. Use um membro de StatusTarefa.")
 
     ## outros métodos
 
