@@ -84,7 +84,6 @@ class Tarefa (ABC):
                 except ValueError:
                     # chegou até aqui e deu erro passo e emito a mensagem
                     pass
-
         # levantei um erro.
         raise ValueError(f"Status: '{statuss}' é inválido. Use um membro de StatusTarefa.")
 
